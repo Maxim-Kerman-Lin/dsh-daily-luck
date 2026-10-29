@@ -158,11 +158,11 @@ const ok = (c, m) => { if (c) pass++; else { console.log('FAIL:', m); process.ex
   ok(text.includes('修改生日'), 'edit birthday button label')
   ok(text.includes('今天可以这样用这张牌'), 'card tip shown')
   ok(text.includes('今日天象'), 'sky note shown')
-  // 没有提问时只显示「心想事成」
+  // 没有提问时不出答案区块，也不再显示「心想事成」
   I.__store.set({ question: '' })
   const res2 = env.call(env.ui.ResultStage)
   const text2 = collectText(res2)
-  ok(text2.includes('心想事成'), 'no-question blessing shown')
+  ok(!text2.includes('心想事成'), 'no blessing text without question')
   ok(!text2.includes('就你的问题'), 'no answer section without question')
   ok(count(res, 'button') >= 2, 'result actions')
   ok(!/undefined|NaN/.test(text), 'no undefined/NaN')

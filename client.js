@@ -1288,6 +1288,7 @@ window.__ModuleLoader__.load({
       }, props.children)
     }
 
+    // 没提问时不出答案区块（不再显示「心想事成」）
     function ScoreBar(props) {
       const { score, label, icon, hit } = props
       const filled = Math.round(score / 20)
@@ -1624,14 +1625,7 @@ window.__ModuleLoader__.load({
 
         (function answerBlock() {
           const answer = buildAnswer(reading, snap.question)
-          if (!answer) {
-            return h('div', {
-              style: {
-                textAlign: 'center', padding: '10px 0 2px',
-                fontSize: 13.5, letterSpacing: '0.32em', color: 'var(--dsw-alias-label-secondary)',
-              },
-            }, '心想事成')
-          }
+          if (!answer) return null
           return h('div', {
             style: {
               padding: '15px 17px', borderRadius: 15,
