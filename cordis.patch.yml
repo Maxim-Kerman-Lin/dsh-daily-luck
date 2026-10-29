@@ -1,0 +1,6 @@
+# 今日好运来临（@local/dsh-daily-luck）bundle patch
+# Host 侧为空壳行；全部界面与计算在浏览器半（./client.js）完成。
+- insert:
+    - id: dsh-daily-luck
+      name: 'dsh-daily-luck'
+      config: {}
